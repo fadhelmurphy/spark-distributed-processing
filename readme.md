@@ -30,19 +30,19 @@ Pastikan Docker Compose sudah terinstal, lalu jalankan perintah berikut untuk me
 docker-compose up -d
 ```
 
-### 2️ Cek Status Container
+### 2 Cek Status Container
 
 Pastikan container berjalan dengan baik:
 
 docker ps
 
-### 3️ Jalankan Pemrosesan CSV dengan Spark
+### 3 Jalankan Pemrosesan CSV dengan Spark
 
 Setelah cluster aktif, jalankan Spark job dengan perintah berikut:
 
 docker exec -it spark-master spark-submit /opt/bitnami/spark/scripts/process_csv.py
 
-### 4️ Cek Hasil Output
+### 4 Cek Hasil Output
 
 Setelah proses selesai, hasil output akan tersedia di folder data/output/ dalam format:
 
