@@ -1,9 +1,9 @@
 # Distributed CSV Processing with Apache Spark
 
-## 📌 Deskripsi
+## Deskripsi
 Proyek ini bertujuan untuk melakukan pemrosesan file CSV secara terdistribusi menggunakan Apache Spark yang berjalan di dalam cluster Docker. Setiap worker akan menghasilkan output CSV masing-masing berdasarkan hasil pembagian data secara otomatis.
 
-## 📂 Struktur Folder
+## Struktur Folder
 ```
 ├── data
 │   ├── input.csv
@@ -15,27 +15,34 @@ Proyek ini bertujuan untuk melakukan pemrosesan file CSV secara terdistribusi me
     └── process_csv.py 
 ```
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
-### 1️⃣ Jalankan Cluster Docker
+### 0 Generate Data
+
+Menghasilkan file input.csv dengan jumlah 3 juta row
+```
+python scripts/generate_csv.py
+```
+
+### 1 Jalankan Cluster Docker
 Pastikan Docker Compose sudah terinstal, lalu jalankan perintah berikut untuk memulai cluster Spark:
 ```sh
 docker-compose up -d
 ```
 
-### 2️⃣ Cek Status Container
+### 2️ Cek Status Container
 
 Pastikan container berjalan dengan baik:
 
 docker ps
 
-### 3️⃣ Jalankan Pemrosesan CSV dengan Spark
+### 3️ Jalankan Pemrosesan CSV dengan Spark
 
 Setelah cluster aktif, jalankan Spark job dengan perintah berikut:
 
 docker exec -it spark-master spark-submit /opt/bitnami/spark/scripts/process_csv.py
 
-### 4️⃣ Cek Hasil Output
+### 4️ Cek Hasil Output
 
 Setelah proses selesai, hasil output akan tersedia di folder data/output/ dalam format:
 

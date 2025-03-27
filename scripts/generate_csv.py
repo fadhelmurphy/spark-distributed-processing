@@ -11,5 +11,5 @@ data = {
 df = pd.DataFrame(data)
 
 # Simpan ke CSV
-df.to_csv("../data/input.csv", index=False)
+df.to_csv("./data/input.csv", index=False)
 print("CSV file created successfully!")
