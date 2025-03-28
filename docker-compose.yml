@@ -5,9 +5,11 @@ services:
     volumes:
       - ./data:/opt/bitnami/spark/data:rw
       - ./scripts:/opt/bitnami/spark/scripts:rw
+    env_file:
+      - .env
     environment:
       - SPARK_MODE=master
-      - SPARK_EXECUTOR_INSTANCES=4 # worker nya cuy
+      - SPARK_EXECUTOR_INSTANCES=${SPARK_WORKER_COUNT:-4}
       - SPARK_EXECUTOR_MEMORY=4g
       - SPARK_EXECUTOR_CORES=2
       - SPARK_SUBMIT_OPTIONS=--conf spark.executor.instances=2 --executor-memory 4G --executor-cores 2
@@ -18,7 +20,7 @@ services:
   spark-worker:
     image: bitnami/spark:latest
     deploy:
-      replicas: 4 # jumlah worker
+      replicas: ${SPARK_WORKER_COUNT:-4} # jumlah worker
     volumes:
       - ./data:/opt/bitnami/spark/data:rw
       - ./scripts:/opt/bitnami/spark/scripts:rw

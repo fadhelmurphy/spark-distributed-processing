@@ -40,7 +40,7 @@ docker ps
 
 Setelah cluster aktif, jalankan Spark job dengan perintah berikut:
 
-docker exec -it spark-master spark-submit /opt/bitnami/spark/scripts/process_csv.py
+docker exec -it spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client /opt/bitnami/spark/scripts/process_csv.py
 
 ### 4 Cek Hasil Output
 
@@ -53,18 +53,21 @@ worker-3.csv
 worker-4.csv
 ```
 
-## ⚙️ Konfigurasi
+## Konfigurasi
 
 Konfigurasi executor dapat diatur melalui variabel environment di dalam docker-compose.yml. Contoh:
 
 ```
+# .env
+SPARK_WORKER_COUNT=4 # Jumlah worker
+
+# docker-compose.yml
 environment:
-  - SPARK_EXECUTOR_INSTANCES=4  # Jumlah executor
   - SPARK_EXECUTOR_MEMORY=4G    # Alokasi memori per executor
   - SPARK_EXECUTOR_CORES=2      # Jumlah core per executor
 ```
 
-## 🛠 Troubleshooting
+## Troubleshooting
 
 Jika output CSV tidak sesuai jumlah executor, pastikan SPARK_EXECUTOR_INSTANCES sesuai dengan jumlah partisi dalam process_csv.py.
 

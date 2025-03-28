@@ -1,0 +1,171 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "SparkSession",
+        "importPath": "pyspark.sql",
+        "description": "pyspark.sql",
+        "isExtraImport": true,
+        "detail": "pyspark.sql",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "spark_partition_id",
+        "importPath": "pyspark.sql.functions",
+        "description": "pyspark.sql.functions",
+        "isExtraImport": true,
+        "detail": "pyspark.sql.functions",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "rows",
+        "kind": 5,
+        "importPath": "scripts.generate_csv",
+        "description": "scripts.generate_csv",
+        "peekOfCode": "rows = 3_000_000\ndata = {\n    \"id\": np.arange(1, rows + 1),\n    \"value\": np.random.randint(1, 100, size=rows)\n}\ndf = pd.DataFrame(data)\n# Simpan ke CSV\ndf.to_csv(\"./data/input.csv\", index=False)\nprint(\"CSV file created successfully!\")",
+        "detail": "scripts.generate_csv",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "scripts.generate_csv",
+        "description": "scripts.generate_csv",
+        "peekOfCode": "data = {\n    \"id\": np.arange(1, rows + 1),\n    \"value\": np.random.randint(1, 100, size=rows)\n}\ndf = pd.DataFrame(data)\n# Simpan ke CSV\ndf.to_csv(\"./data/input.csv\", index=False)\nprint(\"CSV file created successfully!\")",
+        "detail": "scripts.generate_csv",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scripts.generate_csv",
+        "description": "scripts.generate_csv",
+        "peekOfCode": "df = pd.DataFrame(data)\n# Simpan ke CSV\ndf.to_csv(\"./data/input.csv\", index=False)\nprint(\"CSV file created successfully!\")",
+        "detail": "scripts.generate_csv",
+        "documentation": {}
+    },
+    {
+        "label": "executor_instances",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "executor_instances = int(os.getenv(\"SPARK_EXECUTOR_INSTANCES\", \"2\"))\nexecutor_memory = os.getenv(\"SPARK_EXECUTOR_MEMORY\", \"4g\")\nexecutor_cores = os.getenv(\"SPARK_EXECUTOR_CORES\", \"2\")\nspark = SparkSession.builder \\\n    .appName(\"DistributedCSVProcessing\") \\\n    .master(\"spark://spark-master:7077\") \\\n    .config(\"spark.dynamicAllocation.enabled\", \"true\") \\\n    .config(\"spark.dynamicAllocation.minExecutors\", \"1\") \\\n    .config(\"spark.dynamicAllocation.maxExecutors\", \"10\") \\\n    .config(\"spark.executor.memory\", executor_memory) \\",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "executor_memory",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "executor_memory = os.getenv(\"SPARK_EXECUTOR_MEMORY\", \"4g\")\nexecutor_cores = os.getenv(\"SPARK_EXECUTOR_CORES\", \"2\")\nspark = SparkSession.builder \\\n    .appName(\"DistributedCSVProcessing\") \\\n    .master(\"spark://spark-master:7077\") \\\n    .config(\"spark.dynamicAllocation.enabled\", \"true\") \\\n    .config(\"spark.dynamicAllocation.minExecutors\", \"1\") \\\n    .config(\"spark.dynamicAllocation.maxExecutors\", \"10\") \\\n    .config(\"spark.executor.memory\", executor_memory) \\\n    .config(\"spark.executor.cores\", executor_cores) \\",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "executor_cores",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "executor_cores = os.getenv(\"SPARK_EXECUTOR_CORES\", \"2\")\nspark = SparkSession.builder \\\n    .appName(\"DistributedCSVProcessing\") \\\n    .master(\"spark://spark-master:7077\") \\\n    .config(\"spark.dynamicAllocation.enabled\", \"true\") \\\n    .config(\"spark.dynamicAllocation.minExecutors\", \"1\") \\\n    .config(\"spark.dynamicAllocation.maxExecutors\", \"10\") \\\n    .config(\"spark.executor.memory\", executor_memory) \\\n    .config(\"spark.executor.cores\", executor_cores) \\\n    .config(\"spark.executor.instances\", executor_instances) \\",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "spark",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "spark = SparkSession.builder \\\n    .appName(\"DistributedCSVProcessing\") \\\n    .master(\"spark://spark-master:7077\") \\\n    .config(\"spark.dynamicAllocation.enabled\", \"true\") \\\n    .config(\"spark.dynamicAllocation.minExecutors\", \"1\") \\\n    .config(\"spark.dynamicAllocation.maxExecutors\", \"10\") \\\n    .config(\"spark.executor.memory\", executor_memory) \\\n    .config(\"spark.executor.cores\", executor_cores) \\\n    .config(\"spark.executor.instances\", executor_instances) \\\n    .getOrCreate()",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "data_path",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "data_path = \"/opt/bitnami/spark/data/input.csv\"\noutput_folder = \"/opt/bitnami/spark/data/output\"\ndf = spark.read.option(\"header\", \"true\").csv(data_path)\ndf = df.repartition(executor_instances) \ndf = df.withColumn(\"worker\", spark_partition_id())\ndf.write \\\n    .mode(\"overwrite\") \\\n    .option(\"header\", True) \\\n    .partitionBy(\"worker\") \\\n    .csv(output_folder)",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "output_folder",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "output_folder = \"/opt/bitnami/spark/data/output\"\ndf = spark.read.option(\"header\", \"true\").csv(data_path)\ndf = df.repartition(executor_instances) \ndf = df.withColumn(\"worker\", spark_partition_id())\ndf.write \\\n    .mode(\"overwrite\") \\\n    .option(\"header\", True) \\\n    .partitionBy(\"worker\") \\\n    .csv(output_folder)\nfor folder in glob.glob(f\"{output_folder}/worker=*\"):",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "df = spark.read.option(\"header\", \"true\").csv(data_path)\ndf = df.repartition(executor_instances) \ndf = df.withColumn(\"worker\", spark_partition_id())\ndf.write \\\n    .mode(\"overwrite\") \\\n    .option(\"header\", True) \\\n    .partitionBy(\"worker\") \\\n    .csv(output_folder)\nfor folder in glob.glob(f\"{output_folder}/worker=*\"):\n    worker_id = folder.split(\"=\")[-1]",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "df = df.repartition(executor_instances) \ndf = df.withColumn(\"worker\", spark_partition_id())\ndf.write \\\n    .mode(\"overwrite\") \\\n    .option(\"header\", True) \\\n    .partitionBy(\"worker\") \\\n    .csv(output_folder)\nfor folder in glob.glob(f\"{output_folder}/worker=*\"):\n    worker_id = folder.split(\"=\")[-1]\n    for file in glob.glob(f\"{folder}/part-*.csv\"):",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scripts.process_csv",
+        "description": "scripts.process_csv",
+        "peekOfCode": "df = df.withColumn(\"worker\", spark_partition_id())\ndf.write \\\n    .mode(\"overwrite\") \\\n    .option(\"header\", True) \\\n    .partitionBy(\"worker\") \\\n    .csv(output_folder)\nfor folder in glob.glob(f\"{output_folder}/worker=*\"):\n    worker_id = folder.split(\"=\")[-1]\n    for file in glob.glob(f\"{folder}/part-*.csv\"):\n        shutil.move(file, f\"{output_folder}/worker-{worker_id}.csv\")",
+        "detail": "scripts.process_csv",
+        "documentation": {}
+    }
+]
