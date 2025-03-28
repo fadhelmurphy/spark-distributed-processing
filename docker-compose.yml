@@ -10,9 +10,9 @@ services:
     environment:
       - SPARK_MODE=master
       - SPARK_EXECUTOR_INSTANCES=${SPARK_WORKER_COUNT:-4}
-      - SPARK_EXECUTOR_MEMORY=4g
+      - SPARK_EXECUTOR_MEMORY=2g
       - SPARK_EXECUTOR_CORES=2
-      - SPARK_SUBMIT_OPTIONS=--conf spark.executor.instances=2 --executor-memory 4G --executor-cores 2
+      - SPARK_SUBMIT_OPTIONS=--conf spark.executor.instances=2 --executor-memory 2G --executor-cores 2
     ports:
       - "8080:8080"
       - "7077:7077"
